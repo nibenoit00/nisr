@@ -1,26 +1,42 @@
 # Noise detection with AI
-The Noise Pollution Detector is an AI-powered system designed to identify, measure, and map noise levels in urban environments. It analyzes audio recordings collected from sensors or smartphones and uses machine-learning models to classify different types of noise — such as traffic, construction, or human activity — and to detect high-noise hotspots. The system helps city planners, researchers, and communities better understand noise pollution patterns, supporting data-driven decisions to improve urban living conditions and public well-being.
+The Noise Pollution Detector is an AI-powered system designed to identify, measure, and map noise levels in urban environments. It analyzes audio recordings collected from sensors or smartphones and uses machine-learning models to classify different types of noise — such as traffic, construction, or human activity — and to detect high-noise hotspots. The system helps city planners, researchers, and communities better understand noise pollution patterns, supporting data-driven decisions to improve urban living conditions and public well-being
+
 <!-- This is the markdown template for the final project of the Building AI course, 
 created by Reaktor Innovations and University of Helsinki. 
-Copy the template, paste it to your GitHub README and edit! --
+Copy the template, paste it to your GitHub README and edit! -->
 
-Describe briefly in 2-3 sentences what your project is about. About 250 characters is a nice length! 
+# Project Title
+
+Final project for the Building AI course
+
+## Summary
+
+The Noise Pollution Detector uses AI to identify and map high-noise areas in urban environments. By analyzing sound data from different locations, the system helps city planners and communities reduce noise pollution and improve quality of life. Building AI course project.
 
 
 ## Background
 
-Which problems does your idea solve? How common or frequent is this problem? What is your personal motivation? Why is this topic important or interesting?
+Noise pollution is a common problem in cities and can affect health, sleep quality, and well-being. Urban areas often have traffic, construction, and other sources of noise that are difficult to monitor manually. This project aims to:
 
-This is how you make a list, if you need one:
-* problem 1
-* problem 2
-* etc.
+Detect high-noise areas automatically
+
+Identify patterns and trends in urban noise levels
+
+Support city planning and community interventions
+
+My motivation comes from observing noisy neighborhoods and wanting to apply AI to improve living conditions.
 
 
 ## How is it used?
+The system collects audio data from sensors or smartphones in different parts of a city. AI models classify the intensity and type of noise (traffic, construction, human activity). City planners or local authorities can use this data to:
 
-Describe the process of using the solution. In what kind situations is the solution needed (environment, time, etc.)? Who are the users, what kinds of needs should be taken into account?
+Identify noise hotspots
 
+Plan traffic routes or construction schedules
+
+Take targeted actions to reduce noise
+
+Residents can also access summaries of noise levels in their neighborhoods to stay informed.
 Images will make your README look nice!
 Once you upload an image to your repository, you can link link to it like this (replace the URL with file path, if you've uploaded an image to Github.)
 ![Cat](https://upload.wikimedia.org/wikipedia/commons/5/5e/Sleeping_cat_on_her_back.jpg)
@@ -30,49 +46,56 @@ If you need to resize images, you have to use an HTML tag, like this:
 
 This is how you create code examples:
 ```
-def main():
-   countries = ['Denmark', 'Finland', 'Iceland', 'Norway', 'Sweden']
-   pop = [5615000, 5439000, 324000, 5080000, 9609000]   # not actually needed in this exercise...
-   fishers = [1891, 2652, 3800, 11611, 1757]
+import librosa
+import numpy as np
 
-   totPop = sum(pop)
-   totFish = sum(fishers)
-
-   # write your solution here
-
-   for i in range(len(countries)):
-      print("%s %.2f%%" % (countries[i], 100.0))    # current just prints 100%
-
-main()
+# Load audio file
+y, sr = librosa.load('example_audio.wav', duration=5.0)
+# Compute Mel spectrogram
+S = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=128)
+# Convert to log scale
+log_S = librosa.power_to_db(S, ref=np.max)
 ```
 
-
 ## Data sources and AI methods
-Where does your data come from? Do you collect it yourself or do you use data collected by someone else?
-If you need to use links, here's an example:
-[Twitter API](https://developer.twitter.com/en/docs)
+The project uses:
 
-| Syntax      | Description |
-| ----------- | ----------- |
-| Header      | Title       |
-| Paragraph   | Text        |
+Data sources: Open urban sound datasets (e.g., UrbanSound8K
+) or user-contributed recordings
+
+AI techniques:
+
+Audio classification using neural networks (CNNs on spectrograms)
+
+Regression models to predict noise levels over time
+
+Clustering for hotspot detection
+
+Example code snippet for audio preprocessing:
 
 ## Challenges
 
-What does your project _not_ solve? Which limitations and ethical considerations should be taken into account when deploying a solution like this?
+The model cannot reduce noise by itself; it only provides insights
 
+Audio data collection may raise privacy concerns
+
+Predictions may be biased if sensors are not evenly distributed or if certain noise types dominate the dataset
 ## What next?
 
-How could your project grow and become something even more? What kind of skills, what kind of assistance would you  need to move on? 
+Future improvements could include:
 
+Real-time noise monitoring with IoT devices
+
+Community dashboards showing noise levels over time
+
+Integrating with city planning software to suggest actionable interventions
+
+Collaboration with local authorities for targeted noise reduction strategies
 
 ## Acknowledgments
 
-* list here the sources of inspiration 
-* do not use code, images, data etc. from others without permission
-* when you have permission to use other people's materials, always mention the original creator and the open source / Creative Commons licence they've used
-  <br>For example: [Sleeping Cat on Her Back by Umberto Salvagnin](https://commons.wikimedia.org/wiki/File:Sleeping_cat_on_her_back.jpg#filelinks) / [CC BY 2.0](https://creativecommons.org/licenses/by/2.0)
-* etc
-view rawBuilding AI README template hosted with ❤ by GitHub
-You can copy the content from the template and paste it to your README:
+UrbanSound8K dataset – CC BY 4.0
 
+Inspiration: projects analyzing environmental noise with AI and open-source audio processing tools
+
+Librosa library for audio analysis in Python
