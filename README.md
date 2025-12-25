@@ -1,5 +1,5 @@
 # Noise detection with AI
-Project for environment keeping through noise detection AI
+The Noise Pollution Detector is an AI-powered system designed to identify, measure, and map noise levels in urban environments. It analyzes audio recordings collected from sensors or smartphones and uses machine-learning models to classify different types of noise — such as traffic, construction, or human activity — and to detect high-noise hotspots. The system helps city planners, researchers, and communities better understand noise pollution patterns, supporting data-driven decisions to improve urban living conditions and public well-being.
 <!-- This is the markdown template for the final project of the Building AI course, 
 created by Reaktor Innovations and University of Helsinki. 
 Copy the template, paste it to your GitHub README and edit! --
